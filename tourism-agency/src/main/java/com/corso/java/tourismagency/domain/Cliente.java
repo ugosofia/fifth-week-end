@@ -2,6 +2,7 @@ package com.corso.java.tourismagency.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 /**
  *  Si sviluppi una classe Cliente avente come variabili d’istanza il nominativo ed numero telefonico del cliente,
@@ -38,5 +39,18 @@ public class Cliente {
 
     public void setTelNumber(String telNumber) {
         this.telNumber = telNumber;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(nominativo, cliente.nominativo) && Objects.equals(telNumber, cliente.telNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nominativo, telNumber);
     }
 }
