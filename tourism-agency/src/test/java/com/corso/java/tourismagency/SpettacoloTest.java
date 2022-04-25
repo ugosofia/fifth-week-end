@@ -43,8 +43,8 @@ public class SpettacoloTest {
     public void freeListTest() {
         assertTrue(spettacolo.libero());
 
-        //spettacolo.prenota(cliente1.getNominativo(), cliente1.getTelNumber());
-        //assertFalse(spettacolo.libero());
+        spettacolo.prenota(cliente1.getNominativo(), cliente1.getTelNumber());
+        assertFalse(spettacolo.libero());
     }
 
     @Test
