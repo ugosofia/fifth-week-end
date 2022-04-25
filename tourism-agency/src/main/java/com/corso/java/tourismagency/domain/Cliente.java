@@ -2,6 +2,7 @@ package com.corso.java.tourismagency.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -13,6 +14,16 @@ import java.util.Objects;
 public class Cliente {
 
     @Id
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     private String nominativo;
     private String telNumber;
 
@@ -43,14 +54,26 @@ public class Cliente {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Cliente))
+            return false;
+        if (o == null)
+            return false;
         Cliente cliente = (Cliente) o;
-        return Objects.equals(nominativo, cliente.nominativo) && Objects.equals(telNumber, cliente.telNumber);
+
+
+
+        return (this.nominativo.equals(cliente.nominativo)) && (this.telNumber.equals(cliente.telNumber));
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nominativo, telNumber);
+    public static void main(String[] args) {
+        Cliente c = new Cliente("ugo", "434234342");
+        Cliente c1 = new Cliente("ugo", "434234342");
+        ArrayList<Cliente> list = new ArrayList<>();
+        Cliente[] lista = new Cliente[1];
+        Spettacolo spettacolo = new Spettacolo(lista, 1, list);
+
+        spettacolo.prenota(c.getNominativo(), c.getTelNumber());
+
+
     }
 }

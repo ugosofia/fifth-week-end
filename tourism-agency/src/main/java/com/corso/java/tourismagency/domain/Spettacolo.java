@@ -19,6 +19,38 @@ public class Spettacolo {
     @OneToMany
     private ArrayList<Cliente> attesa;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Cliente[] getPrenotazioni() {
+        return prenotazioni;
+    }
+
+    public void setPrenotazioni(Cliente[] prenotazioni) {
+        this.prenotazioni = prenotazioni;
+    }
+
+    public int getN_prenotazione() {
+        return n_prenotazione;
+    }
+
+    public void setN_prenotazione(int n_prenotazione) {
+        this.n_prenotazione = n_prenotazione;
+    }
+
+    public ArrayList<Cliente> getAttesa() {
+        return attesa;
+    }
+
+    public void setAttesa(ArrayList<Cliente> attesa) {
+        this.attesa = attesa;
+    }
+
     public Spettacolo(Cliente[] prenotazioni, int n_prenotazione, ArrayList<Cliente> attesa) {
         this.prenotazioni = prenotazioni;
         this.n_prenotazione = n_prenotazione;
@@ -44,8 +76,8 @@ public class Spettacolo {
         Cliente c = new Cliente(nome, tel);
 
         // controllo se il cliente ha già un posto
-        for (Cliente cliente : this.prenotazioni) {
-            if (cliente.equals(c)) {
+        for (int i = 0; i < prenotazioni.length; i++) {
+            if(c.equals(prenotazioni[i])) {
                 res = 0;
                 break;
             }
@@ -53,7 +85,7 @@ public class Spettacolo {
 
         // controllo se il cliente è in lista di attesa
         for (int i = 0; i < length; i++) {
-            if (attesa.get(i).equals(c)) {
+            if (c.equals(attesa.get(i))) {
                 res = 1;
                 break;
             }
@@ -87,7 +119,7 @@ public class Spettacolo {
 
         //cerco il cliente da eliminare e lo rimuovo.
         for (int i = 0; i < prenotazioni.length; i++) {
-            if (prenotazioni[i].equals(c)) {
+            if (c.equals(prenotazioni[i])) {
                 prenotazioni[i] = null;
                 //aggiungo alle prenotazioni il primo cliente in lista d'attesa
                 prenotazioni[i] = attesa.get(0);
