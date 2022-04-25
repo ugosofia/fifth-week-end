@@ -7,7 +7,9 @@ import java.util.Optional;
 
 public interface ClienteService {
 
-    Optional<Cliente> findById(String id);
+    Optional<Cliente> findClientById(String id);
 
-    List<Cliente> findAll();
+    List<Cliente> findAllClients();
+
+    Cliente addCliente(Cliente cliente);
 }

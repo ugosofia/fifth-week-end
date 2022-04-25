@@ -15,13 +15,18 @@ public class SpettacoloServiceImpl implements SpettacoloService{
     SpettacoloRepository spettacoloRepository;
 
     @Override
-    public Optional<Spettacolo> findById(String id) {
+    public Optional<Spettacolo> findShowById(String id) {
         return spettacoloRepository.findById(id);
     }
 
     @Override
-    public List<Spettacolo> findAll() {
+    public List<Spettacolo> findAllShows() {
         return spettacoloRepository.findAll();
+    }
+
+    @Override
+    public Spettacolo addShow(Spettacolo spettacolo) {
+        return spettacoloRepository.save(spettacolo);
     }
 }
 

@@ -15,12 +15,18 @@ public class ClienteServiceimpl implements ClienteService{
     ClienteRepository clienteRepository;
 
     @Override
-    public Optional<Cliente> findById(String id) {
+    public Optional<Cliente> findClientById(String id) {
         return clienteRepository.findById(id);
     }
 
     @Override
-    public List<Cliente> findAll() {
+    public List<Cliente> findAllClients() {
         return clienteRepository.findAll();
+    }
+
+    @Override
+    public Cliente addCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
+        return cliente;
     }
 }
